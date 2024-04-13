@@ -10,7 +10,7 @@ OTHER		= action state gamelog.txt
 
 .PHONY: all clean
 
-all: $(EXE)
+all: $(EXE) baseline_permissions
 
 ifeq ($(OS),Windows_NT)
 $(EXE): %.exe : %.cpp
@@ -19,6 +19,13 @@ else
 $(EXE): % : %.cpp
 	$(CXX) -Wall -Wextra $(CXXFLAGS) -o $@ $<
 endif
+
+baseline_permissions:
+	chmod +x baseline/baseline1
+	chmod +x baseline/baseline2
+	chmod +x baseline/baseline3
+	chmod +x baseline/baseline4
+	chmod +x baseline/baseline5
 
 clean:
 ifeq ($(OS),Windows_NT)
